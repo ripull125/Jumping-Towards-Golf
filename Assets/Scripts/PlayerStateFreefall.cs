@@ -10,10 +10,12 @@ public class PlayerStateFreefall: PlayerState
 
     public void HandleRight() {
         player.Move(0.2f);
+        player.CapVelocity();
     }
 
     public void HandleLeft() {
         player.Move(-0.2f);
+        player.CapVelocity();
     }
 
     public void HandleJump() {

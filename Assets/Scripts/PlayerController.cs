@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, force);
     }
 
-    void CapVelocity() {
+    public void CapVelocity() {
         if (rb.linearVelocity.x > 5) {
             rb.linearVelocity = new Vector2(5, rb.linearVelocity.y);
         }

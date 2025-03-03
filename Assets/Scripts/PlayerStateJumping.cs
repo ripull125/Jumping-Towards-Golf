@@ -12,10 +12,12 @@ public class PlayerStateJumping: PlayerState
 
     public void HandleRight() {
         player.Move(0.5f);
+        player.CapVelocity();
     }
 
     public void HandleLeft() {
         player.Move(-0.5f);
+        player.CapVelocity();
     }
 
     public void HandleJump() {
