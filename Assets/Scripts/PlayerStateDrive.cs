@@ -26,9 +26,8 @@ public class PlayerStateDrive: PlayerState
         return;
     }
 
-    public void HandleDrive() {
-        //Player cannot enter drive mode while in freefall
-        return;
+    public void Respawn() {
+        player.Respawn();
     }
 
     public void AdvanceState() {

@@ -7,9 +7,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public TMP_Text jumpsLeft;
     private PlayerState state;
+    private Checkpoint lastPoint;
     public int jumps = 5;
     public GameObject arrow;
     public bool isOnGround = false;
+    public 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,6 +34,9 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown("space")) {
             state.HandleJump();
+        }
+        if (Input.GetKeyDown("r")) {
+            state.Respawn();
         }
 
         state.AdvanceState();
@@ -89,5 +94,15 @@ public class PlayerController : MonoBehaviour
     //transfer updatejumps out of player to fulfill single responsibility later
     public void UpdateJumps() {
         jumpsLeft.text = ""+jumps;
+    }
+
+    public void ReachCheckpoint(Checkpoint c) {
+        lastPoint = c;
+        jumps = lastPoint.jumpsToComplete;
+    }
+
+    public void Respawn() {
+        transform.position = lastPoint.respawnPoint;
+        jumps = lastPoint.jumpsToComplete;
     }
 }
