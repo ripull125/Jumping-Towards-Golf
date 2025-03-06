@@ -27,9 +27,8 @@ public class PlayerStateNormal: PlayerState
         }
     }
 
-    public void HandleDrive() {
-        //will implement later
-        return;
+    public void Respawn() {
+        player.Respawn();
     }
 
     public void AdvanceState() {
