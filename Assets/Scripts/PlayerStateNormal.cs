@@ -4,17 +4,18 @@ public class PlayerStateNormal: PlayerState
 {
     protected PlayerController player;
     private bool driveMode = false;
+    public float playerSpeed = 0.5f;
 
     public PlayerStateNormal(PlayerController p){
         player = p;
     }
 
     public void HandleRight() {
-        player.Move(0.5f);
+        player.Move(playerSpeed);
     }
 
     public void HandleLeft() {
-        player.Move(-0.5f);
+        player.Move(-playerSpeed);
     }
 
     public void HandleJump() {
