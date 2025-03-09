@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public int jumps = 5;
     public GameObject arrow;
     public bool isOnGround = false;
+
+    public TMP_Text totalJumpsText;
+    public int totalJumps = 0;
     public 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -94,6 +97,7 @@ public class PlayerController : MonoBehaviour
     //transfer updatejumps out of player to fulfill single responsibility later
     public void UpdateJumps() {
         jumpsLeft.text = ""+jumps;
+        totalJumpsText.text = ""+jumps;
     }
 
     public void ReachCheckpoint(Checkpoint c) {
