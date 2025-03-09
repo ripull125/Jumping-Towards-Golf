@@ -1,5 +1,102 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &422426676588514605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3493858289457269261}
+  - component: {fileID: 4435501718653616041}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3493858289457269261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422426676588514605}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -51.586292, y: -32.491547, z: 280.25278}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3306601068208202228}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4435501718653616041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422426676588514605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc334bb4d14c24adeb1e368ea9ce3cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windFactory: {fileID: 7059973341923370140}
+--- !u!1 &1642589738876943586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2301327829389496135}
+  - component: {fileID: 7059973341923370140}
+  m_Layer: 0
+  m_Name: WindSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2301327829389496135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642589738876943586}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -60.04123, y: -31.993607, z: 0.05507204}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3306601068208202228}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7059973341923370140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642589738876943586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f7d4d56414247f19a5c274f6c8fe49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windPrefab: {fileID: 1379682603528925338, guid: 1da0cf63f7cf941039f4cb9c16c6f2fb, type: 3}
+  maxWindCount: 6
+  spawnAreaMin: {x: -9, y: -2.4}
+  spawnAreaMax: {x: -9, y: 6}
+  spawnInterval: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3683475496328976530
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,11 +269,13 @@ RectTransform:
   - {fileID: 4699354417595938388}
   - {fileID: 4061306107586088658}
   - {fileID: 4815744024819453516}
+  - {fileID: 2301327829389496135}
+  - {fileID: 3493858289457269261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 49.51631, y: 32.759468}
+  m_AnchoredPosition: {x: 47.8, y: 32.5}
   m_SizeDelta: {x: 99.0326, y: 65.5189}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5777786848617226619
@@ -224,7 +323,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2191211026836311902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpsToComplete: 5
-  respawnPoint: {x: 0, y: 0}
+  respawnPoint: {x: 4.25, y: 7.5}
   newCameraPos: {x: 0, y: 0}
 --- !u!1 &8754541863297652137
 GameObject:
