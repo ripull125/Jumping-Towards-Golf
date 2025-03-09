@@ -105,7 +105,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1840305491712143911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windPrefab: {fileID: 1379682603528925338, guid: 1da0cf63f7cf941039f4cb9c16c6f2fb, type: 3}
-  maxWindCount: 10
+  maxWindCount: 12
   spawnAreaMin: {x: -23, y: -13}
   spawnAreaMax: {x: -23, y: 10}
   spawnInterval: 1
