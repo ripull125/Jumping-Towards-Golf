@@ -16,7 +16,6 @@ public class Trampoline : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)  // Corrected function signature
     {
-        Debug.Log("hey");
         if (collision.gameObject.CompareTag("Player"))  // Corrected CompareTag usage
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();

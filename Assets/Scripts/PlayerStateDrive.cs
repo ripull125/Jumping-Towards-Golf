@@ -36,8 +36,12 @@ public class PlayerStateDrive: PlayerState
             if (player.jumps > 1) {
                 player.jumps -= 2;
                 LaunchPlayer();
+                HideArrow();
+                player.SetState(new PlayerStateLaunch(player, 30));
+            } else {
+                HideArrow();
+                player.SetState(new PlayerStateFreefall(player));
             }
-            player.SetState(new PlayerStateFreefall(player));
         }
     }
 
@@ -45,7 +49,6 @@ public class PlayerStateDrive: PlayerState
         float angle = (arrow.transform.rotation.eulerAngles.z + 90) * Mathf.Deg2Rad;
         player.Jump((int)(Mathf.Sin(angle) * 12));
         player.Move((int)(Mathf.Cos(angle) * 12));
-        HideArrow();
     }
 
     void ShowArrow() {

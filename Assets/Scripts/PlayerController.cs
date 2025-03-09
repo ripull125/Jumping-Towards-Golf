@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float force) {
         rb.linearVelocity = new Vector2(force + rb.linearVelocity.x, rb.linearVelocity.y);
-        if (!(state is PlayerStateFreefall)) {
+        if (!(state is PlayerStateLaunch || state is PlayerStateFreefall || state is PlayerStateDrive)) {
             CapVelocity();
         }
     }
