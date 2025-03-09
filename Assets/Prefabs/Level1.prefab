@@ -90,10 +90,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windPrefab: {fileID: 1379682603528925338, guid: 1da0cf63f7cf941039f4cb9c16c6f2fb, type: 3}
-  maxWindCount: 6
+  maxWindCount: 5
   spawnAreaMin: {x: -9, y: -2.4}
   spawnAreaMax: {x: -9, y: 6}
-  spawnInterval: 1
+  spawnInterval: 2
   collisionMask:
     serializedVersion: 2
     m_Bits: 0
@@ -275,7 +275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 47.8, y: 32.5}
+  m_AnchoredPosition: {x: 48, y: 32.7}
   m_SizeDelta: {x: 99.0326, y: 65.5189}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5777786848617226619
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2191211026836311902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,8 +375,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -53.19, y: -33.6566}
-  m_SizeDelta: {x: 47.3728, y: 26.1309}
+  m_AnchoredPosition: {x: -51.8123, y: -33.719418}
+  m_SizeDelta: {x: 44.2696, y: 26.0381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3059593817873575691
 CanvasRenderer:
