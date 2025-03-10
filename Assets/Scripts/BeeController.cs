@@ -15,6 +15,10 @@ public class BeeController : MonoBehaviour
     private bool currentlyChasing;
     private SpriteRenderer spriteRenderer;
 
+    public Transform pointA;
+    public Transform pointB;
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
