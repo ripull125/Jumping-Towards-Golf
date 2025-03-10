@@ -4,11 +4,11 @@ public class Checkpoint : MonoBehaviour
 {
     public int jumpsToComplete;
     public Vector2 respawnPoint;
-    public Vector2 newCameraPos;
+    public Vector3 newCameraPos;
 
     void Start()
     {
-        
+        respawnPoint = transform.position;
     }
 
     void Update()

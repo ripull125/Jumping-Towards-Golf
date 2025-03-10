@@ -148,6 +148,8 @@ public class PlayerController : MonoBehaviour
     public void ReachCheckpoint(Checkpoint c) {
         lastPoint = c;
         jumps = lastPoint.jumpsToComplete;
+        GameObject cam = GameObject.Find("Main Camera");
+        cam.transform.position = c.newCameraPos;
     }
 
     public void Respawn() {
