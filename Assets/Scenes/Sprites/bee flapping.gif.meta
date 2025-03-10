@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 44c84f189a0554d5f86d3391f9d74cd1
+guid: d71fd2715a58d453d9fd207cbcee7540
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3424400597107730512
-    second: golf_0
+      213: 3037808465263554550
+    second: bee flapping_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: golf_0
+      name: bee flapping_0
       rect:
         serializedVersion: 2
-        x: 622
-        y: 133
-        width: 773
-        height: 773
+        x: 0
+        y: 5
+        width: 31
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 058ed37233ae58f20800000000000000
-      internalID: 3424400597107730512
+      spriteID: 6ff65b344b6782a20800000000000000
+      internalID: 3037808465263554550
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      golf_0: 3424400597107730512
+      bee flapping_0: 3037808465263554550
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

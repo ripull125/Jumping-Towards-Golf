@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 9d9a7e2fa0acf4cbc997b2736e7808b2
+guid: 6dfae0a887b3a46019ce76cc81c27166
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8617084769403241117
-    second: floatingground_0
+      213: 1182372098397218841
+    second: aggro bee spritesheet_0
   - first:
-      213: -6699310358299308760
-    second: floatingground_1
+      213: 4766044770775266307
+    second: aggro bee spritesheet_1
   - first:
-      213: 8600788564491704154
-    second: floatingground_2
+      213: 6193567086162827701
+    second: aggro bee spritesheet_2
+  - first:
+      213: -1897606890564015742
+    second: aggro bee spritesheet_3
+  - first:
+      213: -6738179444179251668
+    second: aggro bee spritesheet_4
+  - first:
+      213: 2987110950439694236
+    second: aggro bee spritesheet_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -106,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: floatingground_0
+      name: aggro bee spritesheet_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 87
-        width: 995
-        height: 482
+        x: 0
+        y: 69
+        width: 31
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36d7a48be07f96880800000000000000
-      internalID: -8617084769403241117
+      spriteID: 918ac45b821a86010800000000000000
+      internalID: 1182372098397218841
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floatingground_1
+      name: aggro bee spritesheet_1
       rect:
         serializedVersion: 2
-        x: 246
-        y: 87
-        width: 8
-        height: 9
+        x: 31
+        y: 70
+        width: 32
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82d897d39b44703a0800000000000000
-      internalID: -6699310358299308760
+      spriteID: 304faa9a774642240800000000000000
+      internalID: 4766044770775266307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floatingground_2
+      name: aggro bee spritesheet_2
       rect:
         serializedVersion: 2
-        x: 370
-        y: 61
-        width: 36
-        height: 13
+        x: 0
+        y: 38
+        width: 31
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,8 +174,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a5715c661a32c5770800000000000000
-      internalID: 8600788564491704154
+      spriteID: 5b9594f2378f3f550800000000000000
+      internalID: 6193567086162827701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aggro bee spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 39
+        width: 31
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 289299446985aa5e0800000000000000
+      internalID: -1897606890564015742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aggro bee spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 31
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2e4bd4fe7d2d72a0800000000000000
+      internalID: -6738179444179251668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aggro bee spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 5
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9f23a14599547920800000000000000
+      internalID: 2987110950439694236
       vertices: []
       indices: 
       edges: []
@@ -185,9 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      floatingground_0: -8617084769403241117
-      floatingground_1: -6699310358299308760
-      floatingground_2: 8600788564491704154
+      aggro bee spritesheet_0: 1182372098397218841
+      aggro bee spritesheet_1: 4766044770775266307
+      aggro bee spritesheet_2: 6193567086162827701
+      aggro bee spritesheet_3: -1897606890564015742
+      aggro bee spritesheet_4: -6738179444179251668
+      aggro bee spritesheet_5: 2987110950439694236
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
