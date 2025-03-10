@@ -1800,12 +1800,14 @@ PrefabInstance:
     - target: {fileID: 6399669191753978948, guid: d4ec85b1c110d42038ec8a40ccd10393, type: 3}
       propertyPath: m_Name
       value: Cliff
+
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ec85b1c110d42038ec8a40ccd10393, type: 3}
+
 --- !u!1 &1696633560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,6 +2009,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d166aaab27541b48fca78544094ca8, type: 3}
+
 --- !u!1 &1840098907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,3 +2518,4 @@ SceneRoots:
   - {fileID: 250354216}
   - {fileID: 2015052566}
   - {fileID: 438637544}
+
