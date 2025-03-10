@@ -28,6 +28,7 @@ public class PlayerStateJumping: PlayerState
         if (player.jumps > 0) {
             player.Jump(6);
             player.jumps --;
+            player.totalJumps++;
             jumped = true;
             return;
         }

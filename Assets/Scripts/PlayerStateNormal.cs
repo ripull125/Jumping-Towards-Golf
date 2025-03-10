@@ -24,6 +24,7 @@ public class PlayerStateNormal: PlayerState
         if (player.jumps > 0 && !driveMode) {
             player.Jump(7);
             player.jumps --;
+            player.totalJumps++;
         }
     }
 
