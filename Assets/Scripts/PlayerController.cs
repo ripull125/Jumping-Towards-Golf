@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
     //transfer updatejumps out of player to fulfill single responsibility later
     public void UpdateJumps() {
         jumpsLeft.text = ""+jumps;
-        totalJumpsText.text = ""+jumps;
+        totalJumpsText.text = "Jumps Used: "+ totalJumps;
     }
 
     public void ReachCheckpoint(Checkpoint c) {
