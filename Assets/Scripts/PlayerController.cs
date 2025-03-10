@@ -11,9 +11,12 @@ public class PlayerController : MonoBehaviour
     public int jumps = 5;
     public GameObject arrow;
     public bool isOnGround = false;
+    private SpriteRenderer sprite;
 
     public TMP_Text totalJumpsText;
     public int totalJumps = 0;
+    private Animator anim;
+
     public 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +25,8 @@ public class PlayerController : MonoBehaviour
         state = new PlayerStateNormal(this);
         arrow = GameObject.Find("AimArrow");
         arrow.SetActive(false);
+        anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -43,10 +48,50 @@ public class PlayerController : MonoBehaviour
         }
 
         state.AdvanceState();
+        UpdateAnimation();
     }
 
     public void SetState(PlayerState s) {
         state = s;
+    }
+
+    public void UpdateAnimation() {
+        // First, reset all booleans to false
+        anim.SetBool("IsNormal", false);
+        anim.SetBool("IsJump", false);
+        anim.SetBool("IsFreefall", false);
+        anim.SetBool("IsDrive", false);
+        anim.SetBool("IsLaunch", false);
+
+        // Then, set the correct one based on the current state
+        if (state is PlayerStateNormal) {
+            if (Input.GetKey("right")) {
+                sprite.flipX = false;
+                anim.SetBool("IsWalking", true);
+                anim.Play("PlayerStateWalking");
+            } else if (Input.GetKey("left")){
+                sprite.flipX = true;
+                anim.SetBool("IsWalking", true);
+                anim.Play("PlayerStateWalking");
+            } else {
+                anim.SetBool("IsNormal", true);
+                anim.SetBool("IsWalking", false);
+            }
+        }
+        else if (state is PlayerStateJumping) {
+            anim.SetBool("IsJump", true);
+            anim.Play("PlayerStateJumping");
+        }
+        else if (state is PlayerStateFreefall) {
+            anim.SetBool("IsFreefall", true);
+        }
+        else if (state is PlayerStateDrive) {
+            anim.SetBool("IsDrive", true);
+        }
+        else if (state is PlayerStateLaunch) {
+            anim.SetBool("IsLaunch", true);
+            anim.Play("PlayerStateLaunch");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
