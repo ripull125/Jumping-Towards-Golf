@@ -5,6 +5,7 @@ public class Checkpoint : MonoBehaviour
     public int jumpsToComplete;
     public Vector2 respawnPoint;
     public Vector3 newCameraPos;
+    public bool interactedWith = false;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class Checkpoint : MonoBehaviour
             if (player != null)  // Check if the component exists before using it
             {
                 player.ReachCheckpoint(this);  // Corrected method call
+                interactedWith = true;
             }
             else
             {
