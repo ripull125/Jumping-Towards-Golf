@@ -13,6 +13,7 @@ public class BeeController : MonoBehaviour
 
     private Animator animator;
     private bool currentlyChasing;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -20,25 +21,23 @@ public class BeeController : MonoBehaviour
         patrolStrategy = new BeePatrolStrategy(pointA: new Vector2(-3, 0),
                                             pointB: new Vector2(3, 0),
                                             speed: 2f);
-        chaseStrategy = new BeeChaseStrategy(chaseSpeed: 3f);
+        chaseStrategy = new BeeChaseStrategy(chaseSpeed: 1f);
 
         currentStrategy = patrolStrategy; // Start patrolling
         currentlyChasing = false;
         animator.SetBool("isChasing", false);
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.position);
-
         // Decide which behavior to use based on player's distance
         if (distance < chaseRange && !currentlyChasing)
         {
             // Switch to chase
             currentStrategy = chaseStrategy;
             animator.SetBool("isChasing", true);
-            FlipSprite();
             currentlyChasing = true;
         }
         else if (distance >= chaseRange && currentlyChasing)
@@ -46,8 +45,10 @@ public class BeeController : MonoBehaviour
             // Switch to patrol
             currentStrategy = patrolStrategy;
             animator.SetBool("isChasing", false);
-            FlipSprite();
             currentlyChasing = false;
+        }
+        if (currentlyChasing) {
+            FlipSprite();
         }
         
         // Execute movement behavior
@@ -60,10 +61,21 @@ public class BeeController : MonoBehaviour
         Vector3 scale = transform.localScale;
         // If player is to the left, ensure the bee is flipped (negative x); otherwise, positive.
         if (player.position.x < transform.position.x)
-            scale.x = -Mathf.Abs(scale.x);
+            spriteRenderer.flipX = true;
         else
-            scale.x = Mathf.Abs(scale.x);
+            spriteRenderer.flipX = false;
             
         transform.localScale = scale;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the collided object is tagged "Player"
+        if (other.CompareTag("Player"))
+        {
+            // Call the respawn method on the player's script.
+            other.GetComponent<PlayerController>().Respawn();
+        }
+    }
+
 }
