@@ -1,25 +1,30 @@
 using UnityEngine;
+#if !UNITY_INCLUDE_TESTS
 using TMPro;
-
+#endif
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public TMP_Text jumpsLeft;
     private PlayerState state;
     private Checkpoint lastPoint;
     public int jumps = 5;
     public GameObject arrow;
     public bool isOnGround = false;
     private SpriteRenderer sprite;
-
-    public TMP_Text totalsText;
+    private Animator anim;
     public int totalJumps = 0;
     public int levelsCompleted = -1;
-    private Animator anim;
 
-    public 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+#if !UNITY_INCLUDE_TESTS
+    public TMP_Text jumpsLeft;
+    public TMP_Text totalsText;
+#endif
+
+    public Rigidbody2D Rigidbody => rb;
+    public PlayerState CurrentState => state;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,66 +35,66 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+#if !UNITY_INCLUDE_TESTS
         UpdateJumps();
+#endif
 
-        if (Input.GetKey("right")) {
-            state.HandleRight();
-        }
-        if (Input.GetKey("left")) {
-            state.HandleLeft();
-        }
-        if (Input.GetKeyDown("space")) {
-            state.HandleJump();
-        }
-        if (Input.GetKeyDown("r")) {
-            state.Respawn();
-        }
+        if (Input.GetKey("right")) state.HandleRight();
+        if (Input.GetKey("left")) state.HandleLeft();
+        if (Input.GetKeyDown("space")) state.HandleJump();
+        if (Input.GetKeyDown("r")) state.Respawn();
 
         state.AdvanceState();
         UpdateAnimation();
     }
 
-    public void SetState(PlayerState s) {
-        state = s;
-    }
+    public void SetState(PlayerState s) => state = s;
 
-    public void UpdateAnimation() {
-        // First, reset all booleans to false
+    public void UpdateAnimation()
+    {
         anim.SetBool("IsNormal", false);
         anim.SetBool("IsJump", false);
         anim.SetBool("IsFreefall", false);
         anim.SetBool("IsDrive", false);
         anim.SetBool("IsLaunch", false);
 
-        // Then, set the correct one based on the current state
-        if (state is PlayerStateNormal) {
-            if (Input.GetKey("right")) {
+        if (state is PlayerStateNormal)
+        {
+            if (Input.GetKey("right"))
+            {
                 sprite.flipX = false;
                 anim.SetBool("IsWalking", true);
                 anim.Play("PlayerStateWalking");
-            } else if (Input.GetKey("left")){
+            }
+            else if (Input.GetKey("left"))
+            {
                 sprite.flipX = true;
                 anim.SetBool("IsWalking", true);
                 anim.Play("PlayerStateWalking");
-            } else {
+            }
+            else
+            {
                 anim.SetBool("IsNormal", true);
                 anim.SetBool("IsWalking", false);
             }
         }
-        else if (state is PlayerStateJumping) {
+        else if (state is PlayerStateJumping)
+        {
             anim.SetBool("IsJump", true);
             anim.Play("PlayerStateJumping");
         }
-        else if (state is PlayerStateFreefall) {
+        else if (state is PlayerStateFreefall)
+        {
             anim.SetBool("IsFreefall", true);
         }
-        else if (state is PlayerStateDrive) {
+        else if (state is PlayerStateDrive)
+        {
             anim.SetBool("IsDrive", true);
         }
-        else if (state is PlayerStateLaunch) {
+        else if (state is PlayerStateLaunch)
+        {
             anim.SetBool("IsLaunch", true);
             anim.Play("PlayerStateLaunch");
         }
@@ -111,53 +116,46 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ShowAimArrow() {
-        arrow.SetActive(true);
-    }
-
-    public void HideAimArrow() {
+    public void ShowAimArrow() => arrow.SetActive(true);
+    public void HideAimArrow()
+    {
         arrow.SetActive(false);
         arrow.transform.rotation = Quaternion.identity;
     }
 
-    public void Move(float force) {
+    public void Move(float force)
+    {
         rb.linearVelocity = new Vector2(force + rb.linearVelocity.x, rb.linearVelocity.y);
-        if (!(state is PlayerStateLaunch || state is PlayerStateFreefall || state is PlayerStateDrive)) {
-            CapVelocity();
-        }
+        if (!(state is PlayerStateLaunch || state is PlayerStateFreefall || state is PlayerStateDrive)) CapVelocity();
     }
 
-    public void Jump(float force) {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, force);
+    public void Jump(float force) => rb.linearVelocity = new Vector2(rb.linearVelocity.x, force);
+
+    public void CapVelocity()
+    {
+        if (rb.linearVelocity.x > 5) rb.linearVelocity = new Vector2(5, rb.linearVelocity.y);
+        if (rb.linearVelocity.x < -5) rb.linearVelocity = new Vector2(-5, rb.linearVelocity.y);
     }
 
-    public void CapVelocity() {
-        if (rb.linearVelocity.x > 5) {
-            rb.linearVelocity = new Vector2(5, rb.linearVelocity.y);
-        }
-        if (rb.linearVelocity.x < -5) {
-            rb.linearVelocity = new Vector2(-5, rb.linearVelocity.y);
-        }
+#if !UNITY_INCLUDE_TESTS
+    public void UpdateJumps()
+    {
+        if (jumpsLeft != null) jumpsLeft.text = "" + jumps;
+        if (totalsText != null) totalsText.text = "Jumps Used: " + totalJumps + "\nLevels Completed: " + levelsCompleted;
     }
+#endif
 
-    //transfer updatejumps out of player to fulfill single responsibility later
-    public void UpdateJumps() {
-        jumpsLeft.text = ""+jumps;
-        totalsText.text = "Jumps Used: "+ totalJumps + "\nLevels Completed: " + levelsCompleted;
-    }
-
-    public void ReachCheckpoint(Checkpoint c) {
+    public void ReachCheckpoint(Checkpoint c)
+    {
         lastPoint = c;
         jumps = lastPoint.jumpsToComplete;
         GameObject cam = GameObject.Find("Main Camera");
         cam.transform.position = c.newCameraPos;
-        if(c.interactedWith == false)
-        {
-            levelsCompleted++;
-        }
+        if (!c.interactedWith) levelsCompleted++;
     }
 
-    public void Respawn() {
+    public void Respawn()
+    {
         transform.position = lastPoint.respawnPoint;
         jumps = lastPoint.jumpsToComplete;
     }
