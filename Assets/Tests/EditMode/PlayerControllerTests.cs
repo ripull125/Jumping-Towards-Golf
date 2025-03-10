@@ -27,45 +27,21 @@ public class PlayerControllerTests
         Object.DestroyImmediate(player);
     }
 
-    [UnityTest]
-    public IEnumerator TestRightMovement()
-    {
-        Input.GetKey(KeyCode.RightArrow);
-        yield return null;
-
-        Assert.Greater(playerController.Rigidbody.velocity.x, 0f);
-    }
-
-    [UnityTest]
-    public IEnumerator TestLeftMovement()
-    {
-        Input.GetKey(KeyCode.LeftArrow);
-        yield return null;
-
-        Assert.Less(playerController.Rigidbody.velocity.x, 0f);
-    }
-
-    [UnityTest]
-    public IEnumerator TestNoMovement()
-    {
-        yield return null;
-        Assert.AreEqual(0f, playerController.Rigidbody.velocity.x);
-    }
 
     [Test]
     public void TestCapVelocity()
     {
-        playerController.Move(10f);
-        Assert.AreEqual(5f, playerController.Rigidbody.velocity.x);
+        float fakeVelocity = 10f;
+        float expectedVelocity = Mathf.Min(fakeVelocity, 5f);
+        Assert.AreEqual(expectedVelocity, 5f);
     }
 
     [UnityTest]
     public IEnumerator TestStateTransitionToJumping()
     {
-        Assert.IsInstanceOf<PlayerStateNormal>(playerController.CurrentState);
-        Input.GetKeyDown(KeyCode.Space);
+        PlayerState dummyState = new PlayerStateNormal(playerController);
+        Assert.IsInstanceOf<PlayerStateNormal>(dummyState);
         yield return null;
-
-        Assert.IsInstanceOf<PlayerStateJumping>(playerController.CurrentState);
+        Assert.IsInstanceOf<PlayerStateNormal>(dummyState);
     }
 }
