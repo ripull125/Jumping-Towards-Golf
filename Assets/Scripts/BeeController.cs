@@ -22,13 +22,14 @@ public class BeeController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        patrolStrategy = new BeePatrolStrategy(pointA, pointB, speed: 2f);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        patrolStrategy = new BeePatrolStrategy(pointA.position, pointB.position, speed: 2f, spriteRenderer);
         chaseStrategy = new BeeChaseStrategy(chaseSpeed: 1f);
 
         currentStrategy = patrolStrategy; // Start patrolling
         currentlyChasing = false;
         animator.SetBool("isChasing", false);
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     void Update()

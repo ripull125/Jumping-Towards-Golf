@@ -17,7 +17,7 @@ public class Wind : MonoBehaviour
             Destroy(gameObject);
 
 
-            WindFactory windFactory = FindObjectOfType<WindFactory>();
+            WindFactory windFactory = FindFirstObjectByType<WindFactory>();
             if (windFactory != null)
             {
                 windFactory.OnWindDestroyed();
