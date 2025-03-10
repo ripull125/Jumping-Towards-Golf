@@ -3,8 +3,6 @@ using System.Collections;
 
 public class WindFactory : MonoBehaviour
 {
-    public static WindFactory instance;
-
     public GameObject windPrefab;
     public int maxWindCount = 3;
     public Vector2 spawnAreaMin;
@@ -13,28 +11,28 @@ public class WindFactory : MonoBehaviour
     public LayerMask collisionMask;
 
     private int currentWindCount = 0;
-
-    void Awake()
-    {
-
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    private bool isActive = false; 
 
     void Start()
     {
+        isActive = true; 
         StartCoroutine(SpawnWindOverTime());
+    }
+
+    void OnEnable()
+    {
+        isActive = true;
+        StartCoroutine(SpawnWindOverTime());
+    }
+
+    void OnDisable()
+    {
+        isActive = false; 
     }
 
     private IEnumerator SpawnWindOverTime()
     {
-        while (currentWindCount < maxWindCount)
+        while (isActive && currentWindCount < maxWindCount)
         {
             yield return new WaitForSeconds(Random.Range(spawnInterval / 2, spawnInterval * 1.5f));
 
@@ -45,12 +43,15 @@ public class WindFactory : MonoBehaviour
     public void OnWindDestroyed()
     {
         currentWindCount--;
-        SpawnWind();
+        if (isActive) 
+        {
+            SpawnWind();
+        }
     }
 
     public void SpawnWind()
     {
-        if (currentWindCount >= maxWindCount)
+        if (!isActive || currentWindCount >= maxWindCount)
             return;
 
         Vector2 spawnPosition = new Vector2(
@@ -67,7 +68,6 @@ public class WindFactory : MonoBehaviour
                 Random.Range(spawnAreaMin.x, spawnAreaMax.x),
                 Random.Range(spawnAreaMin.y, spawnAreaMax.y)
             );
-
             attempts++;
         }
 

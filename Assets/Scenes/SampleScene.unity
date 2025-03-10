@@ -928,6 +928,26 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7812278848384846981, guid: 53d32a76e46b541898bd24065317d5ec, type: 3}
+      propertyPath: maxWindCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812278848384846981, guid: 53d32a76e46b541898bd24065317d5ec, type: 3}
+      propertyPath: spawnAreaMax.x
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812278848384846981, guid: 53d32a76e46b541898bd24065317d5ec, type: 3}
+      propertyPath: spawnAreaMax.y
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812278848384846981, guid: 53d32a76e46b541898bd24065317d5ec, type: 3}
+      propertyPath: spawnAreaMin.x
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812278848384846981, guid: 53d32a76e46b541898bd24065317d5ec, type: 3}
+      propertyPath: spawnAreaMin.y
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1036,6 +1056,26 @@ PrefabInstance:
     - target: {fileID: 4867544315067040, guid: ea389a8462ab3442280790d48ff819d6, type: 3}
       propertyPath: newCameraPos.z
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219399370996027039, guid: ea389a8462ab3442280790d48ff819d6, type: 3}
+      propertyPath: maxWindCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219399370996027039, guid: ea389a8462ab3442280790d48ff819d6, type: 3}
+      propertyPath: spawnAreaMax.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219399370996027039, guid: ea389a8462ab3442280790d48ff819d6, type: 3}
+      propertyPath: spawnAreaMax.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219399370996027039, guid: ea389a8462ab3442280790d48ff819d6, type: 3}
+      propertyPath: spawnAreaMin.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219399370996027039, guid: ea389a8462ab3442280790d48ff819d6, type: 3}
+      propertyPath: spawnAreaMin.y
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5605912153957536387, guid: ea389a8462ab3442280790d48ff819d6, type: 3}
       propertyPath: newCameraPos.x
@@ -1219,6 +1259,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 249510179863395016, guid: 1c97df408a01a470dbb9e8046c2aefb5, type: 3}
+      propertyPath: maxWindCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 249510179863395016, guid: 1c97df408a01a470dbb9e8046c2aefb5, type: 3}
+      propertyPath: spawnAreaMax.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 249510179863395016, guid: 1c97df408a01a470dbb9e8046c2aefb5, type: 3}
+      propertyPath: spawnAreaMax.y
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 249510179863395016, guid: 1c97df408a01a470dbb9e8046c2aefb5, type: 3}
+      propertyPath: spawnAreaMin.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 249510179863395016, guid: 1c97df408a01a470dbb9e8046c2aefb5, type: 3}
+      propertyPath: spawnAreaMin.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1585772749993411221, guid: 1c97df408a01a470dbb9e8046c2aefb5, type: 3}
       propertyPath: m_Name
       value: Level5
@@ -1335,6 +1395,26 @@ PrefabInstance:
     - target: {fileID: 1794462656113414662, guid: 3a3717f6b4be943eb902dd3ec9fb2ed7, type: 3}
       propertyPath: m_Name
       value: Level4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909379115250598803, guid: 3a3717f6b4be943eb902dd3ec9fb2ed7, type: 3}
+      propertyPath: maxWindCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909379115250598803, guid: 3a3717f6b4be943eb902dd3ec9fb2ed7, type: 3}
+      propertyPath: spawnAreaMax.x
+      value: -71.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909379115250598803, guid: 3a3717f6b4be943eb902dd3ec9fb2ed7, type: 3}
+      propertyPath: spawnAreaMax.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909379115250598803, guid: 3a3717f6b4be943eb902dd3ec9fb2ed7, type: 3}
+      propertyPath: spawnAreaMin.x
+      value: -71.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909379115250598803, guid: 3a3717f6b4be943eb902dd3ec9fb2ed7, type: 3}
+      propertyPath: spawnAreaMin.y
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4494428635708461052, guid: 3a3717f6b4be943eb902dd3ec9fb2ed7, type: 3}
       propertyPath: newCameraPos.x
@@ -1935,11 +2015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda715437f443447dbf417092590fde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpsLeft: {fileID: 336589278}
   jumps: 5
   arrow: {fileID: 0}
   isOnGround: 0
-  totalsText: {fileID: 1227172179}
   totalJumps: 0
   levelsCompleted: 0
 --- !u!212 &1840098910

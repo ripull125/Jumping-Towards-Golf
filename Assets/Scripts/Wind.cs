@@ -17,10 +17,12 @@ public class Wind : MonoBehaviour
             Destroy(gameObject);
 
 
-            if (WindFactory.instance != null)
+            WindFactory windFactory = FindObjectOfType<WindFactory>();
+            if (windFactory != null)
             {
-                WindFactory.instance.OnWindDestroyed();
+                windFactory.OnWindDestroyed();
             }
+
         }
     }
 
