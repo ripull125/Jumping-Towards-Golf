@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround = false;
     private SpriteRenderer sprite;
 
-    public TMP_Text totalJumpsText;
+    public TMP_Text totalsText;
     public int totalJumps = 0;
+    public int levelsCompleted = -1;
     private Animator anim;
 
     public 
@@ -142,7 +143,7 @@ public class PlayerController : MonoBehaviour
     //transfer updatejumps out of player to fulfill single responsibility later
     public void UpdateJumps() {
         jumpsLeft.text = ""+jumps;
-        totalJumpsText.text = "Jumps Used: "+ totalJumps;
+        totalsText.text = "Jumps Used: "+ totalJumps + "\nLevels Completed: " + levelsCompleted;
     }
 
     public void ReachCheckpoint(Checkpoint c) {
@@ -150,6 +151,10 @@ public class PlayerController : MonoBehaviour
         jumps = lastPoint.jumpsToComplete;
         GameObject cam = GameObject.Find("Main Camera");
         cam.transform.position = c.newCameraPos;
+        if(c.interactedWith == false)
+        {
+            levelsCompleted++;
+        }
     }
 
     public void Respawn() {
