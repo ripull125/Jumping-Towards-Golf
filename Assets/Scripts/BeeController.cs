@@ -22,9 +22,7 @@ public class BeeController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        patrolStrategy = new BeePatrolStrategy(pointA: new Vector2(-3, 0),
-                                            pointB: new Vector2(3, 0),
-                                            speed: 2f);
+        patrolStrategy = new BeePatrolStrategy(pointA, pointB, speed: 2f);
         chaseStrategy = new BeeChaseStrategy(chaseSpeed: 1f);
 
         currentStrategy = patrolStrategy; // Start patrolling
