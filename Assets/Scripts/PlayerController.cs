@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sprite;
 
     public TMP_Text totalsText;
+    private StatManager statManager;
     public int totalJumps = 0;
-    public int levelsCompleted = -1;
+    public int levelsCompleted = 0;
     private Animator anim;
+
+    
 
     public 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,6 +31,8 @@ public class PlayerController : MonoBehaviour
         arrow.SetActive(false);
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        //totalJumps = GetComponent<statManager>();
+        //levelsCompleted = GetComponent<statManager>();
     }
 
     // Update is called once per frame
@@ -154,6 +159,7 @@ public class PlayerController : MonoBehaviour
         if(c.interactedWith == false)
         {
             levelsCompleted++;
+            //EventBus.PublishLevelCompleted();
         }
     }
 

@@ -25,6 +25,7 @@ public class PlayerStateNormal: PlayerState
             player.Jump(7);
             player.jumps --;
             player.totalJumps++;
+            //EventBus.PublishJumpUsed(1);
         }
     }
 

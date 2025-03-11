@@ -777,7 +777,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 22
+  orthographic size: 13
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1941,7 +1941,7 @@ MonoBehaviour:
   isOnGround: 0
   totalsText: {fileID: 1227172179}
   totalJumps: 0
-  levelsCompleted: 0
+  levelsCompleted: -1
 --- !u!212 &1840098910
 SpriteRenderer:
   m_ObjectHideFlags: 0
