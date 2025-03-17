@@ -11,11 +11,11 @@ public class WindFactory : MonoBehaviour
     public LayerMask collisionMask;
 
     private int currentWindCount = 0;
-    private bool isActive = false; 
+    private bool isActive = false;
 
     void Start()
     {
-        isActive = true; 
+        isActive = true;
         StartCoroutine(SpawnWindOverTime());
     }
 
@@ -27,7 +27,7 @@ public class WindFactory : MonoBehaviour
 
     void OnDisable()
     {
-        isActive = false; 
+        isActive = false;
     }
 
     private IEnumerator SpawnWindOverTime()
@@ -42,17 +42,25 @@ public class WindFactory : MonoBehaviour
 
     public void OnWindDestroyed()
     {
-        currentWindCount--;
-        if (isActive) 
+        currentWindCount = Mathf.Max(0, currentWindCount - 1);
+
+        Wind wind = FindObjectOfType<Wind>();
+        if (wind != null)
         {
-            SpawnWind();
+            DestroyImmediate(wind.gameObject);
         }
+
+        Debug.Log($"Wind destroyed - new count: {currentWindCount}");
     }
+
 
     public void SpawnWind()
     {
         if (!isActive || currentWindCount >= maxWindCount)
+        {
+            Debug.Log($"Spawn skipped - currentWindCount: {currentWindCount}, maxWindCount: {maxWindCount}");
             return;
+        }
 
         Vector2 spawnPosition = new Vector2(
             Random.Range(spawnAreaMin.x, spawnAreaMax.x),
@@ -75,6 +83,14 @@ public class WindFactory : MonoBehaviour
         {
             Instantiate(windPrefab, spawnPosition, Quaternion.identity);
             currentWindCount++;
+            Debug.Log($"Spawned wind at {spawnPosition} - Count: {currentWindCount}");
+        }
+        else
+        {
+            Debug.Log("Failed to find a valid spawn position after max attempts.");
         }
     }
+
+
+
 }

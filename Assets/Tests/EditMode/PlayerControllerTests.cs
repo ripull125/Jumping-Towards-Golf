@@ -19,6 +19,9 @@ public class PlayerControllerTests
         player.AddComponent<SpriteRenderer>();
         player.SetActive(false);
         player.SetActive(true);
+
+        // **Manually assign Rigidbody2D in PlayerController**
+        playerController.GetType().GetField("rb", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(playerController, rb);
     }
 
     [TearDown]
@@ -27,21 +30,31 @@ public class PlayerControllerTests
         Object.DestroyImmediate(player);
     }
 
-
     [Test]
-    public void TestCapVelocity()
+    public void CapVelocity_LimitsSpeedCorrectly()
     {
-        float fakeVelocity = 10f;
-        float expectedVelocity = Mathf.Min(fakeVelocity, 5f);
-        Assert.AreEqual(expectedVelocity, 5f);
+        rb.linearVelocity = new Vector2(10f, 0f);
+        playerController.CapVelocity();
+        Assert.AreEqual(5f, rb.linearVelocity.x, "Expected velocity to be capped at 5, but it wasn't.");
+
+        rb.linearVelocity = new Vector2(-10f, 0f);
+        playerController.CapVelocity();
+        Assert.AreEqual(-5f, rb.linearVelocity.x, "Expected velocity to be capped at -5, but it wasn't.");
     }
 
-    [UnityTest]
-    public IEnumerator TestStateTransitionToJumping()
+    [Test]
+    public void Jump_UpdatesYVelocity()
     {
-        PlayerState dummyState = new PlayerStateNormal(playerController);
-        Assert.IsInstanceOf<PlayerStateNormal>(dummyState);
-        yield return null;
-        Assert.IsInstanceOf<PlayerStateNormal>(dummyState);
+        float jumpForce = 7f;
+        playerController.Jump(jumpForce);
+        Assert.AreEqual(jumpForce, rb.linearVelocity.y, "Jump did not correctly update Y velocity.");
+    }
+
+    [Test]
+    public void SetState_ChangesStateSuccessfully()
+    {
+        PlayerState newState = new PlayerStateJumping(playerController);
+        playerController.SetState(newState);
+        Assert.AreEqual(newState, playerController.CurrentState, "SetState() did not correctly update the player's state.");
     }
 }

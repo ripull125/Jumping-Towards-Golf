@@ -13,6 +13,10 @@ public class WindFactoryTests
         windFactory = windFactoryObject.AddComponent<WindFactory>();
         windFactory.windPrefab = new GameObject("WindPrefab");
         windFactory.windPrefab.AddComponent<Wind>();
+
+        windFactory.spawnAreaMin = new Vector2(-5, -5);
+        windFactory.spawnAreaMax = new Vector2(5, 5);
+        windFactory.maxWindCount = 3;
     }
 
     [TearDown]
@@ -20,35 +24,47 @@ public class WindFactoryTests
     {
         Object.DestroyImmediate(windFactoryObject);
         Object.DestroyImmediate(windFactory.windPrefab);
+
+        foreach (var wind in Object.FindObjectsOfType<Wind>())
+        {
+            Object.DestroyImmediate(wind.gameObject);
+        }
     }
 
     [Test]
-    public void SpawnWind_WhenCalled_CreatesAtLeastOneWindObject()
+    public void SpawnWind_SpawnsWindObject_WhenUnderMaxCount()
     {
         windFactory.SpawnWind();
-        int windCount = GameObject.FindObjectsOfType<Wind>().Length;
-        Assert.GreaterOrEqual(windCount + 1, 1);
+        int windCount = Object.FindObjectsOfType<Wind>().Length;
+        Assert.AreEqual(1, windCount, "WindFactory should have spawned one wind object.");
     }
-
     [Test]
-    public void SpawnWind_WhenMaxCountReached_DoesNotGoBelowZero()
+    public void SpawnWind_LimitsSpawnedObjects()
     {
         windFactory.maxWindCount = 3;
-        for (int i = 0; i < 5; i++)
-        {
-            windFactory.SpawnWind();
-        }
-        int windCount = GameObject.FindObjectsOfType<Wind>().Length;
-        Assert.GreaterOrEqual(windCount, 3);
+
+        windFactory.SpawnWind();
+        windFactory.SpawnWind();
+        windFactory.SpawnWind();
+        windFactory.SpawnWind();
+
+        int windCount = Object.FindObjectsOfType<Wind>().Length;
+
+        Assert.LessOrEqual(windCount, windFactory.maxWindCount,
+            $"Spawned {windCount} winds, but max allowed is {windFactory.maxWindCount}");
     }
 
+
     [Test]
-    public void WindObject_MovesRight_OnSpawn()
+    public void OnWindDestroyed_DecreasesWindCount()
     {
         windFactory.SpawnWind();
-        Wind wind = GameObject.FindObjectOfType<Wind>();
-        float initialX = wind != null ? wind.transform.position.x : 0;
-        float movedX = initialX + (wind != null ? 1f : 0f);
-        Assert.GreaterOrEqual(movedX, initialX);
+        Wind wind = Object.FindObjectOfType<Wind>();
+
+        windFactory.OnWindDestroyed();
+
+        int windCount = Object.FindObjectsOfType<Wind>().Length;
+        Assert.AreEqual(0, windCount, "Wind count should decrease after destruction.");
     }
+
 }
