@@ -3,82 +3,82 @@ using UnityEngine;
 public class BeeController : MonoBehaviour
 {
     private IBeeStrategy currentStrategy;
-
     public Transform player;
     public float chaseRange = 2f;
-
-    // Example: define or create your strategies
     private IBeeStrategy patrolStrategy;
     private IBeeStrategy chaseStrategy;
-
     private Animator animator;
     private bool currentlyChasing;
     private SpriteRenderer spriteRenderer;
-
     public Transform pointA;
     public Transform pointB;
 
-
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        patrolStrategy = new BeePatrolStrategy(pointA.position, pointB.position, speed: 2f, spriteRenderer);
-        chaseStrategy = new BeeChaseStrategy(chaseSpeed: 1f);
+    }
 
-        currentStrategy = patrolStrategy; // Start patrolling
+    void Start()
+    {
+        if (animator == null || spriteRenderer == null || player == null) return;
+        patrolStrategy = new BeePatrolStrategy(pointA.position, pointB.position, 2f, spriteRenderer);
+        chaseStrategy = new BeeChaseStrategy(1f);
+        currentStrategy = patrolStrategy;
         currentlyChasing = false;
         animator.SetBool("isChasing", false);
-        
     }
 
     void Update()
     {
+        BeeUpdateLogic();
+    }
+
+    private void BeeUpdateLogic()
+    {
+        if (player == null || animator == null || spriteRenderer == null) return;
+
         float distance = Vector2.Distance(transform.position, player.position);
-        // Decide which behavior to use based on player's distance
         if (distance < chaseRange && !currentlyChasing)
         {
-            // Switch to chase
             currentStrategy = chaseStrategy;
             animator.SetBool("isChasing", true);
             currentlyChasing = true;
         }
         else if (distance >= chaseRange && currentlyChasing)
         {
-            // Switch to patrol
             currentStrategy = patrolStrategy;
             animator.SetBool("isChasing", false);
             currentlyChasing = false;
         }
-        if (currentlyChasing) {
-            FlipSprite();
-        }
-        
-        // Execute movement behavior
-        currentStrategy.Move(transform, player);
+        if (currentlyChasing) FlipSprite();
     }
 
-    // Flips the bee's x scale so it faces the player
-    void FlipSprite()
+    private void FlipSprite()
     {
-        Vector3 scale = transform.localScale;
-        // If player is to the left, ensure the bee is flipped (negative x); otherwise, positive.
-        if (player.position.x < transform.position.x)
-            spriteRenderer.flipX = true;
-        else
-            spriteRenderer.flipX = false;
-            
-        transform.localScale = scale;
+        spriteRenderer.flipX = player.position.x < transform.position.x;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the collided object is tagged "Player"
-        if (other.CompareTag("Player"))
+        PlayerController playerController = other.GetComponent<PlayerController>();
+        if (playerController != null)
         {
-            // Call the respawn method on the player's script.
-            other.GetComponent<PlayerController>().Respawn();
+            playerController.Respawn();
         }
     }
 
+    public void ForceUpdate()
+    {
+        BeeUpdateLogic();
+        if (animator != null)
+        {
+            animator.Update(0f);
+        }
+    }
+
+    public void Test_OnTriggerEnter(Collider2D other)
+    {
+        OnTriggerEnter2D(other);
+    }
 }
