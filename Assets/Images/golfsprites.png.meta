@@ -684,7 +684,30 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      golfsprites_0: 5680084018045116390
+      golfsprites_1: -4705453679172873793
+      golfsprites_10: 2894722388373773872
+      golfsprites_11: 4589326378415953
+      golfsprites_12: -2163122390737153580
+      golfsprites_13: 4791929656053314095
+      golfsprites_14: -6771173059660419385
+      golfsprites_15: -7019185285823593303
+      golfsprites_16: -5282324657480851490
+      golfsprites_17: -637522380783912884
+      golfsprites_18: 450476927213658225
+      golfsprites_19: 3691054126613245439
+      golfsprites_2: -6056975739314982075
+      golfsprites_20: 4031891490999585351
+      golfsprites_21: 8703741332005793855
+      golfsprites_22: -7428964680317919220
+      golfsprites_3: -5792481873019186826
+      golfsprites_4: 3655104526083419096
+      golfsprites_5: 6490337773442605754
+      golfsprites_6: -280850160338814870
+      golfsprites_7: 4707064963115010073
+      golfsprites_8: -5875216662359508203
+      golfsprites_9: 526105032091238457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -19,6 +19,7 @@ public class BeeController : MonoBehaviour
     public Transform pointB;
 
 
+
     void Start()
     {
         animator = GetComponent<Animator>();
